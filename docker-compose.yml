@@ -30,7 +30,7 @@ services:
 
   collecteur:
     container_name: mds_ias_collecteur
-  command: tail -f /dev/null
+    command: tail -f /dev/null
     build:
       context: .
       dockerfile: collecteur/Dockerfile
@@ -49,4 +49,4 @@ services:
       context: .
       dockerfile: automates/Dockerfile
     ports:
-      - "8001:8001"
+      - "3002:3002"
