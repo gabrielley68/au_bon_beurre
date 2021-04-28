@@ -29,6 +29,28 @@ except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
 
+# Get Cursor
+cur = conn.cursor()
+cur.execute("CREATE DATABASE {}".format(DB_DATABASE))
+
+query = """CREATE TABLE IF NOT EXISTS {} ( 
+                unit_no int(10),
+                automate_no int(10),
+                type_automate int(10),
+                tank_temperature FLOAT(8,2),
+                ext_temperature FLOAT(8,2),
+                milk_weight_tank int(10),
+                final_weight int(10),
+                ph FLOAT(8,2),
+                k_plus int(10),
+                nacl_concentration FLOAT(8,2),
+                salmonella_bacteria_level int(10),
+                e_coli_bacteria_level int(10),
+                listeria_bacteria_level int(10) ); """.format(DB_DATABASE)
+
+# To execute the SQL query
+cur.execute(query)
+
 s = socket.socket()
 s.bind((SOCKET_HOST, SOCKET_PORT))
 s.listen()
