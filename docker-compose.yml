@@ -4,17 +4,17 @@ volumes:
   datadb:
 
 services:
-#  db:
-#    container_name: mds_ias_db
-#    image: mariadb
-#    restart: unless-stopped
-#    command: 'mysqld --innodb_use_native_aio=0'
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root
-#    ports:
-#      - 3306:3306
-#    volumes:
-#      - datadb:/var/lib/mysql
+  db:
+    container_name: mds_ias_db
+    image: mariadb
+    restart: unless-stopped
+    command: 'mysqld --innodb_use_native_aio=0'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - datadb:/var/lib/mysql
 
   web:
     container_name: mds_ias_web
@@ -28,23 +28,23 @@ services:
     ports:
       - "3001:3001"
 
-#  collecteur:
-#    container_name: mds_ias_collecteur
-#    build:
-#      context: .
-#      dockerfile: collecteur/Dockerfile
-#    ports:
-#      - "8000:8000"
-#
-#
-#  ue1:
-#    container_name: mds_ias_ue1
-#    environment:
-#      - unit_number=1
-#    volumes:
-#    - ./:/automates/
-#    build:
-#      context: .
-#      dockerfile: automates/Dockerfile
-#    ports:
-#      - "8001:8001"
+  collecteur:
+    container_name: mds_ias_collecteur
+    build:
+      context: .
+      dockerfile: collecteur/Dockerfile
+    ports:
+      - "8000:8000"
+
+
+  ue1:
+    container_name: mds_ias_ue1
+    environment:
+      - unit_number=1
+    volumes:
+    - ./:/automates/
+    build:
+      context: .
+      dockerfile: automates/Dockerfile
+    ports:
+      - "8001:8001"
