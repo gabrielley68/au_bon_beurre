@@ -15,8 +15,8 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("/records", async (req, res) => {
-	const records = await db.getRecords(pool);
-	res.json({records: []});
+	//const records = await db.getRecords(pool);
+	res.json({records: ["test", "test2"]});
 });
 
 app.get("/", (req, res) => {
