@@ -3,8 +3,19 @@ import os
 import random
 
 unit_number = os.environ['unit_number']
-automat_number = os.environ['automat_number']
-automat_type = os.environ['automat_type']
+
+automats = {
+    1: 0X0000BA20,
+    2: 0X0000BA21,
+    3: 0X0000BA22,
+    4: 0X0000BA23,
+    5: 0X0000BA24,
+    6: 0X0000BA25,
+    7: 0X0000BA26,
+    8: 0X0000BA27,
+    9: 0X0000BA28,
+    10: 0X0000BA29
+}
 
 
 def random_data(unit_number, automat_number, automat_type):
@@ -19,18 +30,18 @@ def random_data(unit_number, automat_number, automat_type):
     listeria_level = random.randint(28, 54)
 
     data_set = {
-        "unit_number": unit_number,
-        "automat_number": automat_number,
-        "automat_type": automat_type,
+        "unit_no": unit_number,
+        "automate_no": automat_number,
+        "type_automate": automat_type,
         "tank_temperature": tank_temperature,
-        "outside_temperature": outside_temperature,
-        "milk_weight_in_tank": milk_weight_in_tank,
-        "ph_measurement": ph_measurement,
-        "k_plus_measurement": k_plus_measurement,
+        "ext_temperature": outside_temperature,
+        "milk_weight_tank": milk_weight_in_tank,
+        "ph": ph_measurement,
+        "k_plus": k_plus_measurement,
         "nacl_concentration": nacl_concentration,
-        "salmonella_level": salmonella_level,
-        "e_coli_level": e_coli_level,
-        "listeria_level": listeria_level
+        "salmonella_bacteria_level": salmonella_level,
+        "e_coli_bacteria_level": e_coli_level,
+        "listeria_bacteria_level": listeria_level
     }
 
     # json format
@@ -41,4 +52,7 @@ def random_data(unit_number, automat_number, automat_type):
     return json_object
 
 
-random_data(unit_number, automat_number, automat_type)
+random_jsons = []
+
+for automat_number, automat_type in automats.items():
+    random_jsons.append(random_data(unit_number, automat_number, automat_type))
