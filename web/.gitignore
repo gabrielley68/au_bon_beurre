@@ -1,1 +1,5 @@
+/web/node_modules/*
+/web/client/node_modules/*
+.DS_Store
+.idea
 node_modules

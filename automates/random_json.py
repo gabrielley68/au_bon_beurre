@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import socket
 
 unit_number = os.environ['unit_number']
 
@@ -56,3 +57,10 @@ random_jsons = []
 
 for automat_number, automat_type in automats.items():
     random_jsons.append(random_data(unit_number, automat_number, automat_type))
+
+host = "127.0.0.1"
+port = "3002"
+
+s = socket.socket()
+s.connect((host, port))
+s.send(json.dumps(random_jsons).encode("utf-8"))
