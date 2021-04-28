@@ -30,6 +30,7 @@ services:
 
   collecteur:
     container_name: mds_ias_collecteur
+  command: tail -f /dev/null
     build:
       context: .
       dockerfile: collecteur/Dockerfile
