@@ -43,6 +43,7 @@ services:
       - unit_number=1
     volumes:
     - ./:/automates/
+    command: tail -f /dev/null
     build:
       context: .
       dockerfile: automates/Dockerfile
