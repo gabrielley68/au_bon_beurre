@@ -58,8 +58,8 @@ random_jsons = []
 for automat_number, automat_type in automats.items():
     random_jsons.append(random_data(unit_number, automat_number, automat_type))
 
-host = "127.0.0.1"
-port = "3002"
+host = "mds_ias_collecteur"
+port = 5001
 
 s = socket.socket()
 s.connect((host, port))

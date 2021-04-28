@@ -6,8 +6,8 @@ import socket
 from automate import Automate
 
 DB_USER = "root"
-DB_PASSWORD = "root"
-DB_HOST = "127.0.0.1"
+DB_PASSWORD = "ias"
+DB_HOST = "mds_ias_db"
 DB_PORT = 3306
 DB_DATABASE = "automate"
 

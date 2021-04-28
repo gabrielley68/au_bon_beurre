@@ -35,7 +35,7 @@ services:
       context: .
       dockerfile: collecteur/Dockerfile
     ports:
-      - "8000:8000"
+      - "5001:5001"
 
 
   ue1:
