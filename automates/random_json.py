@@ -1,9 +1,13 @@
 import json
+import os
 import random
 
+unit_number = os.environ['unit_number']
+automat_number = os.environ['automat_number']
+automat_type = os.environ['automat_type']
 
-def random_data(unit_number, automat_number):
-    automat_type = hex(random.randint(int(0X0000BA20), int(0X0000BA2F)))
+
+def random_data(unit_number, automat_number, automat_type):
     tank_temperature = round(random.uniform(2.4, 4.0), 1)
     outside_temperature = round(random.uniform(8.0, 14.0), 1)
     milk_weight_in_tank = random.randint(3512, 4607)
@@ -15,7 +19,7 @@ def random_data(unit_number, automat_number):
     listeria_level = random.randint(28, 54)
 
     data_set = {
-        "unit_number" : unit_number,
+        "unit_number": unit_number,
         "automat_number": automat_number,
         "automat_type": automat_type,
         "tank_temperature": tank_temperature,
@@ -29,7 +33,12 @@ def random_data(unit_number, automat_number):
         "listeria_level": listeria_level
     }
 
+    # json format
     json_dump = json.dumps(data_set)
+    # dict format
     json_object = json.loads(json_dump)
 
-    return json_dump
+    return json_object
+
+
+random_data(unit_number, automat_number, automat_type)
