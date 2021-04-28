@@ -31,7 +31,7 @@ except mariadb.Error as e:
 
 # Get Cursor
 cur = conn.cursor()
-cur.execute("CREATE DATABASE {}".format(DB_DATABASE))
+cur.execute("CREATE DATABASE IF NOT EXISTS {};".format(DB_DATABASE))
 
 query = """CREATE TABLE IF NOT EXISTS {} ( 
                 unit_no int(10),
