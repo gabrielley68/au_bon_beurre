@@ -1,6 +1,3 @@
-import json
-
-
 class Automate:
     def __init__(self,
                  unit_no: int,
@@ -106,21 +103,23 @@ class Automate:
         return self.listeria_bacteria_level
 
     @staticmethod
-    def json_to_class(json_file: str):
-        with open(json_file, 'r') as f:
-            json_data = json.load(f)
+    def json_to_class(json_data):
+        automates = []
 
-        return Automate(
-            json_data["unit_no"],
-            json_data["automate_no"],
-            json_data["type_automate"],
-            json_data["tank_temperature"],
-            json_data["ext_temperature"],
-            json_data["milk_weight_tank"],
-            json_data["final_weight"],
-            json_data["ph"],
-            json_data["k_plus"],
-            json_data["nacl_concentration"],
-            json_data["salmonella_bacteria_level"],
-            json_data["e_coli_bacteria_level"],
-            json_data["listeria_bacteria_level"])
+        for json_object in json_data:
+            automates.append(Automate(
+                json_object["unit_no"],
+                json_object["automate_no"],
+                json_object["type_automate"],
+                json_object["tank_temperature"],
+                json_object["ext_temperature"],
+                json_object["milk_weight_tank"],
+                json_object["final_weight"],
+                json_object["ph"],
+                json_object["k_plus"],
+                json_object["nacl_concentration"],
+                json_object["salmonella_bacteria_level"],
+                json_object["e_coli_bacteria_level"],
+                json_object["listeria_bacteria_level"]))
+
+        return automates
